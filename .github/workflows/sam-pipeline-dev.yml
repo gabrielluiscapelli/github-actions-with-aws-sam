@@ -5,10 +5,6 @@ on:
     branches:
       - develop
 
-inputs:
-  config-env:
-    description: "SAM config env to use"
-    required: true
 
 jobs:
   build-deploy:
@@ -25,6 +21,13 @@ jobs:
           aws-region: eu-west-1
       # sam build 
       - run: sam build --use-container
+
+
+#Inputs
+inputs:
+  config-env:
+    description: "SAM config env to use"
+    required: true
 
 # Run Unit tests- Specify unit tests here 
 
