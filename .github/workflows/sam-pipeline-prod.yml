@@ -13,6 +13,7 @@ jobs:
       - uses: aws-actions/setup-sam@v1
       - uses: aws-actions/configure-aws-credentials@v1
         with:
+          config-env: Production
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
@@ -22,4 +23,4 @@ jobs:
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-prod --s3-bucket lynxview-aws-sam-prod --capabilities CAPABILITY_IAM --region eu-west-1
+      - run: sam deploy --config-env Production --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-prod --s3-bucket lynxview-aws-sam-prod --capabilities CAPABILITY_IAM --region eu-west-1

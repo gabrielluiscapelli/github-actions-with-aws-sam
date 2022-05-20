@@ -15,9 +15,9 @@ Parameters:
     Description: The environment to deploy to
     Type: String
     AllowedValues:
-      - main
-      - develop
-    Default: develop
+      - Production
+      - Develop
+    Default: Develop
 
 Resources:
   HelloWorldFunction:
