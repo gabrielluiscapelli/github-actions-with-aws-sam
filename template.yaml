@@ -36,7 +36,11 @@ Resources:
           Properties:
             Path: /hello
             Method: get
-            StageName: Develop
+            RestApiId: !Ref MyApi
+        MyApi:
+          Type: AWS::Serverless::Api
+          Properties:
+            StageName: v1
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
