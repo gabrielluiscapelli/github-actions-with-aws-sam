@@ -1,7 +1,10 @@
+name: 'Manual - Build & Deploy'
+
 on:
   push:
     branches:
       - main
+      - develop
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
