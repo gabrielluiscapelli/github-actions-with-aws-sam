@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - develop
+
+inputs:
+  config-env:
+    description: "SAM config env to use"
+    required: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -23,4 +29,4 @@ jobs:
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      - run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-dev --s3-bucket lynxview-aws-sam --capabilities CAPABILITY_IAM --region eu-west-1
+      - run: sam deploy --config-env ${{ inputs.config-env }} --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-dev --s3-bucket lynxview-aws-sam --capabilities CAPABILITY_IAM --region eu-west-1
