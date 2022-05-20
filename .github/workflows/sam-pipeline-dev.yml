@@ -25,4 +25,4 @@ jobs:
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      - run: sam deploy --parameter-overrides "Environment=Develop" --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-dev --s3-bucket lynxview-aws-sam --capabilities CAPABILITY_IAM --region eu-west-1
+      - run: sam deploy --parameter-overrides "Environment=Develop" --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-dev --s3-bucket lynxview-aws-sam-dev --capabilities CAPABILITY_IAM --region eu-west-1
