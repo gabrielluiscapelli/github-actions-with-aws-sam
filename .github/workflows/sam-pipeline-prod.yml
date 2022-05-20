@@ -21,13 +21,7 @@ jobs:
       # sam build 
       - run: sam build --use-container
 
-#Inputs
-inputs:
-  config-env:
-    description: "SAM config env to use"
-    required: true
-
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      - run: sam deploy --config-env ${{ inputs.config-env }} --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-prod --s3-bucket lynxview-aws-sam-prod --capabilities CAPABILITY_IAM --region eu-west-1
+      - run: sam deploy --config-env Production --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-prod --s3-bucket lynxview-aws-sam-prod --capabilities CAPABILITY_IAM --region eu-west-1
