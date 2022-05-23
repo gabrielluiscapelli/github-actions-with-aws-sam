@@ -20,6 +20,8 @@ jobs:
       # sam build 
       - run: sam build --use-container
       - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
 
 # Run Unit tests- Specify unit tests here 
 
