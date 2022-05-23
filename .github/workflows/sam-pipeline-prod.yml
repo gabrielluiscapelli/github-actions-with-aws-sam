@@ -24,7 +24,6 @@ jobs:
         with:
           secret: ${{ github.TOKEN }}
           approvers: gabrielluiscapelli
-          minimum-approvals: 1
         - name: Deploy to production
           run: echo deploying
 
