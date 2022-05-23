@@ -6,15 +6,6 @@ on:
       - main
 
 jobs:
-  build:
-    steps:
-      - uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: gabrielluiscapelli
-          minimum-approvals: 1
-        - name: Deploy to production
-          run: echo deploying
   build-deploy:
     runs-on: ubuntu-latest
     environment: 'prod'
@@ -28,9 +19,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       # sam build 
-      - run: sam build --use-container
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: gabrielluiscapelli
+          minimum-approvals: 1
+        - name: Deploy to production
+          run: echo deploying
+      #- run: sam build --use-container
 
 # Run Unit tests- Specify unit tests here 
 
 # sam deploy
-      - run: sam deploy --parameter-overrides "Environment=Production" --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-prod --s3-bucket lynxview-aws-sam-prod --capabilities CAPABILITY_IAM --region eu-west-1
+      #- run: sam deploy --parameter-overrides "Environment=Production" --no-confirm-changeset --no-fail-on-empty-changeset --stack-name sam-hello-world-prod --s3-bucket lynxview-aws-sam-prod --capabilities CAPABILITY_IAM --region eu-west-1
