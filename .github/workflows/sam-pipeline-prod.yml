@@ -6,13 +6,8 @@ on:
       - main
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-latest
-    environment: 'prod'
+  build:
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: aws-actions/setup-sam@v1
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
@@ -20,6 +15,13 @@ jobs:
           minimum-approvals: 1
         - name: Deploy to production
           run: echo deploying
+  build-deploy:
+    runs-on: ubuntu-latest
+    environment: 'prod'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: aws-actions/setup-sam@v1
       - uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
