@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: 'prod'
     steps:
+      - uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: gabrielluiscapelli
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: aws-actions/setup-sam@v1
@@ -22,10 +26,7 @@ jobs:
 
       - run: sam build --use-container
       
-      - uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: gabrielluiscapelli
+
         
 # Run Unit tests- Specify unit tests here 
 
